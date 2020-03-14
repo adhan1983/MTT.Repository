@@ -13,7 +13,7 @@ namespace MTT.IdentityServer.Infra.CrossCutting.Identity.IdentityServerConfigura
         {
             //string STRCONNECTION = Environment.GetEnvironmentVariable("STRCONNECTION");
             
-            string STRCONNECTION = @"Data Source=.\SQLEXPRESS;Initial Catalog=IdentityServer;Persist Security Info=True;User ID=aom_identityserver;Password=***********;";
+            string STRCONNECTION = @"Server=CEPHEUS.cd.com;Port=3306;Database=wz_identityserver;Uid=user_wz_identityserver;Pwd=123987!@#;persistsecurityinfo=True;SslMode=none;";
 
             var migrationsAssembly = typeof(IdentityServerMockRepository).GetTypeInfo().Assembly.GetName().Name;
 

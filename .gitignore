@@ -23,3 +23,9 @@
 /MTT/MTT.IdentityServer.Infra.CrossCutting.Identity/bin/Debug/netcoreapp3.1
 /MTT/MTT.IdentityServer.Infra.CrossCutting.Identity/obj/Debug/netcoreapp3.1
 /MTT/MTT.IdentityServer.Infra.CrossCutting.Identity/obj
+/MTT/MTT.Application.AppService/obj/Debug/netcoreapp3.1
+/MTT/MTT.Application.AppService/bin/Debug/netcoreapp3.1
+/MTT/MTT.Application.AppService/obj
+/MTT/MTT.Application.Domain/bin/Debug/netcoreapp3.1
+/MTT/MTT.Application.Infra.CrossCutting/bin/Debug/netcoreapp3.1
+/MTT/MTT.Application.Infra.Repository/bin/Debug/netcoreapp3.1

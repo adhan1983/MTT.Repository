@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MTT.IdentityServer.Infra.CrossCutting.Identity.DbContext;
 using MTT.IdentityServer.Service.Domain;
-using System;
 
 namespace MTT.IdentityServer.Infra.CrossCutting.Identity.AspNetIdentityConfiguration
 {
@@ -13,7 +12,7 @@ namespace MTT.IdentityServer.Infra.CrossCutting.Identity.AspNetIdentityConfigura
         {
             //string STRCONNECTION = Environment.GetEnvironmentVariable("STRCONNECTION");
 
-            string STRCONNECTION = @"Data Source=.\SQLEXPRESS;Initial Catalog=IdentityServer;Persist Security Info=True;User ID=aom_identityserver;Password=***********;";
+            string STRCONNECTION = @"Server=CEPHEUS.cd.com;Port=3306;Database=wz_identityserver;Uid=user_wz_identityserver;Pwd=123987!@#;persistsecurityinfo=True;SslMode=none;";
 
             services.AddDbContext<ApplicationDbContext>(o => o.UseMySql(STRCONNECTION));
 
