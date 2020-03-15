@@ -70,7 +70,7 @@ namespace MTT.Application.AppService.Services
             var model = await _musterDomainService.GetByIdAsync(request.Id);
 
             if (model != null && model.Id > 0 && await _musterDomainService.DeleteAsync(model))
-                return new DeleteMusterResponse(true);
+                return new DeleteMusterResponse(true, message: "Muster was deleted successfully!");
             else
                 return new DeleteMusterResponse(false, error: "Fail to delete user!");
         }

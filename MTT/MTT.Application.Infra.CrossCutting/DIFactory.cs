@@ -15,14 +15,17 @@ namespace MTT.Application.Infra.CrossCutting
             services.AddScoped<IUserApplicationService, UserApplicationService>();
             services.AddScoped<ICategoryApplicationService, CategoryApplicationService>();
             services.AddScoped<IMusterApplicationService, MusterApplicationService>();
+            services.AddScoped<IActivityApplicationService, ActivityApplicationService>();
 
             services.AddScoped<IUserDomainService, UserDomainService>();
             services.AddScoped<ICategoryDomainService, CategoryDomainService>();
             services.AddScoped<IMusterDomainService, MusterDomainService>();
+            services.AddScoped<IActivityDomainService, ActivityDomainService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IMusterRepository, MusterRepository>();
+            services.AddScoped<IActivityRepository, ActivityRepository>();
         }
     }
 }

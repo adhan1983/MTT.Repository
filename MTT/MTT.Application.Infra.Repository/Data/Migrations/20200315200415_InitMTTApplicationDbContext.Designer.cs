@@ -2,14 +2,16 @@
 using MTT.Application.Infra.Repository.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace MTT.Application.Infra.Repository.Data.Migrations.Application
+namespace MTT.Application.Infra.Repository.Data.Migrations
 {
     [DbContext(typeof(MTTApplicationDbContext))]
-    partial class MTTApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200315200415_InitMTTApplicationDbContext")]
+    partial class InitMTTApplicationDbContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,8 +28,9 @@ namespace MTT.Application.Infra.Repository.Data.Migrations.Application
                     b.Property<int>("MusterId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

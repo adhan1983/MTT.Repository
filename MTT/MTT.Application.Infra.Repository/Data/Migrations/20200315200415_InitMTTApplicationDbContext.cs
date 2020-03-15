@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MTT.Application.Infra.Repository.Data.Migrations.Application
+namespace MTT.Application.Infra.Repository.Data.Migrations
 {
     public partial class InitMTTApplicationDbContext : Migration
     {
@@ -62,7 +62,7 @@ namespace MTT.Application.Infra.Repository.Data.Migrations.Application
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     WasConcluded = table.Column<bool>(nullable: false),
                     MusterId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
