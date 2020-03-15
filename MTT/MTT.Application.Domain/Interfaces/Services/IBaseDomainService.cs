@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MTT.Application.Domain.Interfaces.Services
 {
     public interface IBaseDomainService<TEntity, Tkey> where TEntity : class
     {
-        void Insert(TEntity obj);
-        void Update(TEntity obj);
-        void Delete(TEntity obj);
-        List<TEntity> GetAll();
-        TEntity GetById(Tkey id);
+        Task<bool> InsertAsync(TEntity obj);
+        Task<bool> UpdateAsync(TEntity obj);
+        Task<bool> DeleteAsync(TEntity obj);
+        Task<List<TEntity>> GetAllAsync();
+        Task<TEntity> GetByIdAsync(Tkey id);
     }
 }

@@ -8,8 +8,4 @@
     <ProjectReference Include="..\MTT.Application.Domain\MTT.Application.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contracts\Messages\" />
-  </ItemGroup>
-
 </Project>

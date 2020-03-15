@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MTT.Application.Infra.CrossCutting;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace MTT.Application.Presentation.API
 {
@@ -23,6 +24,16 @@ namespace MTT.Application.Presentation.API
                 c.IgnoreObsoleteProperties();
                 c.DocumentFilterDescriptors.AsReadOnly();
                 c.CustomSchemaIds(i => i.FullName);
+
+                //c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                //{
+                //    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                //    Name = "Authorization",
+                //    In = "header",
+                //    Type = "apiKey"
+                //});
+
+
             });
         }        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,7 +51,7 @@ namespace MTT.Application.Presentation.API
             {
                 c.SwaggerEndpoint("v1/swagger.json", "MTTApplication.API v1");
                 c.DefaultModelExpandDepth(0);
-                c.DefaultModelsExpandDepth(-1);
+                c.DefaultModelsExpandDepth(-1);                
             });
             app.UseEndpoints(endpoints =>
             {

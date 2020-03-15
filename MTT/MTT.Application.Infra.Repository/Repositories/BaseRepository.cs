@@ -1,54 +1,59 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MTT.Application.Domain.Interfaces.Repositories;
 using MTT.Application.Infra.Repository.Contexts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MTT.Application.Infra.Repository.Repositories
 {
     public class BaseRepository<TEntity, Tkey> : IBaseRepository<TEntity, Tkey> where TEntity : class
     {
-        public void Delete(TEntity obj)
+        public async Task<bool> DeleteAsync(TEntity obj)
         {
             using (var ctx = new MTTApplicationDbContext())
             {
+                bool wasDeleted = false;
                 ctx.Entry(obj).State = EntityState.Deleted;
-                ctx.SaveChanges();
+                wasDeleted =  await ctx.SaveChangesAsync() == 1 ? true : false;
+                return await Task.FromResult(wasDeleted);
             }
         }
-
-        public List<TEntity> GetAll()
+        public async Task<List<TEntity>> GetAllAsync()
         {
             using (var ctx = new MTTApplicationDbContext())
             {
-                return ctx.Set<TEntity>().ToList();
+                var lst = ctx.Set<TEntity>().ToList();
+                
+                return await Task.FromResult(lst);
             }
-
         }
-
-        public TEntity GetById(Tkey id)
+        public async Task<TEntity> GetByIdAsync(Tkey id)
         {
             using (var ctx = new MTTApplicationDbContext())
             {
-                return ctx.Set<TEntity>().Find(id);
+                return await ctx.Set<TEntity>().FindAsync(id);
             }
         }
-
-        public void Insert(TEntity obj)
-        {
+        public async Task<bool> InsertAsync(TEntity obj)
+        {            
             using (var ctx = new MTTApplicationDbContext())
             {
+                var wasInserted = false;
                 ctx.Entry(obj).State = EntityState.Added;
-                ctx.SaveChanges();
+                wasInserted = Convert.ToBoolean(ctx.SaveChangesAsync().Result);
+                return await Task.FromResult(wasInserted);
             }
         }
-
-        public void Update(TEntity obj)
+        public async Task<bool> UpdateAsync(TEntity obj)
         {
             using (var ctx = new MTTApplicationDbContext())
             {
+                bool waUpdated = false;
                 ctx.Entry(obj).State = EntityState.Modified;
-                ctx.SaveChanges();
+                waUpdated = Convert.ToBoolean(ctx.SaveChangesAsync());
+                return await Task.FromResult(waUpdated);
             }
 
         }
