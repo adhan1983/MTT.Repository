@@ -38,7 +38,7 @@ namespace MTT.Application.Presentation.API.Controllers
 
         [HttpGet]
         [Route("/list")]
-        public async Task<IActionResult> GetAllAsync([FromQuery]ListUserRequest request)
+        public async Task<IActionResult> Get([FromQuery]ListUserRequest request)
         {
             var response = await _userApplicationService.ListUserAsync(request);
 

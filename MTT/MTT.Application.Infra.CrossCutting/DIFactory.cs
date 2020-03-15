@@ -12,9 +12,17 @@ namespace MTT.Application.Infra.CrossCutting
     {
         public static void InvokeDIFactory(this IServiceCollection services)
         {
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserDomainService, UserDomainService>();
             services.AddScoped<IUserApplicationService, UserApplicationService>();
+            services.AddScoped<ICategoryApplicationService, CategoryApplicationService>();
+            services.AddScoped<IMusterApplicationService, MusterApplicationService>();
+
+            services.AddScoped<IUserDomainService, UserDomainService>();
+            services.AddScoped<ICategoryDomainService, CategoryDomainService>();
+            services.AddScoped<IMusterDomainService, MusterDomainService>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IMusterRepository, MusterRepository>();
         }
     }
 }

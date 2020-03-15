@@ -33,7 +33,9 @@ namespace MTT.Application.Infra.Repository.Repositories
         {
             using (var ctx = new MTTApplicationDbContext())
             {
-                return await ctx.Set<TEntity>().FindAsync(id);
+                var entity = ctx.Set<TEntity>().FindAsync(id);
+                
+                return await Task.FromResult(entity.Result);
             }
         }
         public async Task<bool> InsertAsync(TEntity obj)
@@ -52,7 +54,7 @@ namespace MTT.Application.Infra.Repository.Repositories
             {
                 bool waUpdated = false;
                 ctx.Entry(obj).State = EntityState.Modified;
-                waUpdated = Convert.ToBoolean(ctx.SaveChangesAsync());
+                waUpdated = Convert.ToBoolean(ctx.SaveChangesAsync().Result);
                 return await Task.FromResult(waUpdated);
             }
 

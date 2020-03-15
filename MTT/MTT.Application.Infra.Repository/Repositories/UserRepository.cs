@@ -14,7 +14,7 @@ namespace MTT.Application.Infra.Repository.Repositories
         public async Task<List<User>> GetAllByFilter(Expression<Func<User, bool>> predicate)
         {
             using (var ctx = new MTTApplicationDbContext())
-            {
+            {               
                 var lst = ctx.User.Where(predicate).ToList();
                 
                 return await Task.FromResult(lst);

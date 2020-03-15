@@ -41,7 +41,7 @@ namespace MTT.Application.Infra.Repository.Data.Migrations.Application
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     WasConcluded = table.Column<bool>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },

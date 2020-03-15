@@ -11,7 +11,7 @@ namespace MTT.Application.Domain.Service
         public async Task<bool> InsertAsync(TEntity obj) => await this._baseRepository.InsertAsync(obj);
         public async Task<bool> DeleteAsync(TEntity obj) => await this._baseRepository.DeleteAsync(obj);
         public async Task<List<TEntity>> GetAllAsync()   => await this._baseRepository.GetAllAsync();
-        public Task<TEntity> GetByIdAsync(TKey id)       => this._baseRepository.GetByIdAsync(id);
+        public async Task<TEntity> GetByIdAsync(TKey id) => await this._baseRepository.GetByIdAsync(id);
         public async Task<bool> UpdateAsync(TEntity obj) => await this._baseRepository.UpdateAsync(obj);
     }
 }
