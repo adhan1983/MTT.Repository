@@ -9,5 +9,6 @@ namespace MTT.Application.Domain.Interfaces.Services
     public interface IMusterDomainService : IBaseDomainService<Muster, int>
     {
         Task<List<Muster>> GetAllByFilter(Expression<Func<Muster, bool>> predicate);
+        Task<Muster> GetMusterByIdWithCategory(int id);        
     }
 }

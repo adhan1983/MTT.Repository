@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MTT.Application.AppService.Contracts.Messages.Muster;
 using MTT.Application.AppService.Contracts.Requests.Muster;
 using MTT.Application.AppService.Interfaces;
 using System.Net;
@@ -32,23 +31,24 @@ namespace MTT.Application.Presentation.API.Controllers
             var response = await _musterApplicationService.UpdateAsync(request);
 
             if (response.Success)
-                return StatusCode((int)HttpStatusCode.Created, response.Muster);
+                return StatusCode((int)HttpStatusCode.OK, response.Message);
             else
                 return StatusCode((int)HttpStatusCode.BadRequest, response.Errors);
         }
 
-        [HttpPatch][Route("/wasconcluded")]
+        [HttpPut]
+        [Route("/{Id}")]
         public async Task<IActionResult> Put([FromBody]MusterConcludedRequest request)
         {
             var response = await _musterApplicationService.WasConcludedAsync(request);
 
             if (response.Success)
-                return StatusCode((int)HttpStatusCode.Created, response.Muster);
+                return StatusCode((int)HttpStatusCode.OK, response.Message);
             else
                 return StatusCode((int)HttpStatusCode.BadRequest, response.Errors);
         }
 
-        [HttpGet][Route("/list")]
+        [HttpGet][Route("")]
         public async Task<IActionResult> Get([FromQuery]ListMusterRequest request)
         {
             var response = await _musterApplicationService.ListMusterAsync(request);
@@ -59,7 +59,7 @@ namespace MTT.Application.Presentation.API.Controllers
                 return StatusCode((int)HttpStatusCode.NotFound, response.Errors);
         }
 
-        [HttpGet][Route("{id}")]
+        [HttpGet][Route("/{id}")]
         public async Task<IActionResult> Get([FromQuery]GetMusterRequest request)
         {
             var response = await _musterApplicationService.GetMusterByIdAsync(request);
@@ -71,10 +71,11 @@ namespace MTT.Application.Presentation.API.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody]DeleteMusterRequest request)
+        [Route("/{id}")]
+        public async Task<IActionResult> Delete([FromRoute]DeleteMusterRequest request)
         {
             var response = await _musterApplicationService.DeletedAsync(request);
-            
+
             if (response.Success)
                 return StatusCode((int)HttpStatusCode.NoContent, response);
             else

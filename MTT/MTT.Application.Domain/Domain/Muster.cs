@@ -9,10 +9,12 @@ namespace MTT.Application.Domain.Domain
         {
             this.Name = name;
             this.CategoryId = categoryId;
+            this.WasConcluded = false;
         }
-        public void Update(string name) 
+        public void Update(string name, int categoryId) 
         {
-            this.Name = name;            
+            this.Name = name;
+            this.CategoryId = categoryId;
         }
         public void Concluded(bool wasConcluded) 
         {

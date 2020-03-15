@@ -26,9 +26,8 @@ namespace MTT.Application.Infra.Repository.Data.Migrations.Application
                     b.Property<int>("MusterId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                         .IsRequired()
-                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("Name")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -71,8 +70,9 @@ namespace MTT.Application.Infra.Repository.Data.Migrations.Application
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("WasConcluded")
                         .HasColumnType("tinyint(1)");

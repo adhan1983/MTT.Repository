@@ -5,15 +5,14 @@ namespace MTT.Application.AppService.Contracts.Responses.Muster
 {
     public class ConcludedMusterResponse : BaseResponse
     {
-        public ConcludedMusterResponse(bool success, UpdateMusterMessage muster = null, string error = "") 
+        public ConcludedMusterResponse(bool success, string message = "", string error = "") 
         {
-            Muster = muster;
+            Message = message;
             Success = success;
             if (!success)
                 SetError(error);
         }
 
-        [JsonPropertyName("muster")]
-        public UpdateMusterMessage Muster { get; set; }
+        
     }
 }

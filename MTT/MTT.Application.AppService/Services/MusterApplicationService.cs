@@ -19,10 +19,11 @@ namespace MTT.Application.AppService.Services
         public async Task<CreateMusterResponse> CreateAsync(CreateMusterRequest request)
         {
             var model = new Muster();
-            
+
             model.Add(request.Name, request.CategoryId);
-            
+
             var result = await _musterDomainService.InsertAsync(model);
+            
             if (result)
                 return new CreateMusterResponse(true, model.Id);
             else
@@ -32,27 +33,37 @@ namespace MTT.Application.AppService.Services
         {
             var model = await _musterDomainService.GetByIdAsync(request.Id);
 
-            model.Update(request.Name);
+            if (model != null && model.Id > 0)
+            {
+                model.Update(request.Name, request.CategoryId);
 
-            var result = await _musterDomainService.UpdateAsync(model);
+                var result = await _musterDomainService.UpdateAsync(model);               
 
-            if (result)
-                return new UpDateMusterResponse(true, new UpdateMusterMessage { Id = model.Id, Name = model.Name, WasConcluded = model.WasConcluded });
+                if (result)
+                    return new UpDateMusterResponse(true, message: "Muster was updated successfully!");
+                else
+                    return new UpDateMusterResponse(false, error: "Fail to update Muster");
+            }
             else
-                return new UpDateMusterResponse(true, error: "Fail to Create Muster");
+                return new UpDateMusterResponse(false, error: "Fail to update Muster");
         }
         public async Task<ConcludedMusterResponse> WasConcludedAsync(MusterConcludedRequest request)
         {
             var model = await _musterDomainService.GetByIdAsync(request.Id);
 
-            model.Concluded(request.WasConcluded);
+            if (model != null && !model.WasConcluded)
+            {
+                model.Concluded(request.WasConcluded);
 
-            var result = await _musterDomainService.UpdateAsync(model);
+                var result = await _musterDomainService.UpdateAsync(model);
 
-            if (result)
-                return new ConcludedMusterResponse(true, new UpdateMusterMessage { Id = model.Id, Name = model.Name, WasConcluded = model.WasConcluded });
+                if (result)
+                    return new ConcludedMusterResponse(true, message: "Muster was concluded successfully!");
+                else
+                    return new ConcludedMusterResponse(false, error: "Fail to conclude Muster");
+            }
             else
-                return new ConcludedMusterResponse(true, error: "Fail to Create Muster");
+                return new ConcludedMusterResponse(false, error: "Fail to conclude Muster");
         }
         public async Task<DeleteMusterResponse> DeletedAsync(DeleteMusterRequest request)
         {
@@ -66,18 +77,18 @@ namespace MTT.Application.AppService.Services
         public async Task<ListMusterResponse> ListMusterAsync(ListMusterRequest request)
         {
             var predicate = PredicateBuilder.True<Muster>();
-            
-            predicate.And(p => p.Name.Contains(request.Name));
-            
-            predicate.And(p => p.CategoryId == request.CategoryId);
+
+            predicate = predicate.And(p => p.Name.Contains(request.Name));
+
+            predicate = predicate.And(p => p.CategoryId == request.CategoryId);
 
             var response = await _musterDomainService.GetAllByFilter(predicate);
 
             if (response != null && response.Count() > 0)
             {
                 var lst = response.
-                    Select(mu => 
-                    new ListMusterMessage 
+                    Select(mu =>
+                    new ListMusterMessage
                     {
                         Id = mu.Id,
                         Name = mu.Name,
@@ -93,10 +104,10 @@ namespace MTT.Application.AppService.Services
         }
         public async Task<GetMusterResponse> GetMusterByIdAsync(GetMusterRequest request)
         {
-            var response = await _musterDomainService.GetByIdAsync(request.Id);
+            var response = await _musterDomainService.GetMusterByIdWithCategory(request.Id);
 
-            if (response != null && response.Id > 0) 
-            {               
+            if (response != null && response.Id > 0)
+            {
                 var musterMessage = new GetMusterMessage
                 {
                     Id = response.Id,

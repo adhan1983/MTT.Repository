@@ -9,6 +9,9 @@ namespace MTT.Application.AppService.Contracts.Requests.Muster
         public int Id { get; set; }
 
         [JsonPropertyName("name")][Required]
-        public string Name { get; set; }        
+        public string Name { get; set; }
+
+        [JsonPropertyName("categoryId")][Required]
+        public int CategoryId { get; set; }
     }
 }

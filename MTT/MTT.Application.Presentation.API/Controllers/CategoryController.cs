@@ -31,7 +31,7 @@ namespace MTT.Application.Presentation.API.Controllers
             var response = await _categoryApplicationService.UpdateAsync(request);
 
             if (response.Success)
-                return StatusCode((int)HttpStatusCode.Created, response.Category);
+                return StatusCode((int)HttpStatusCode.OK, response.Category);
             else
                 return StatusCode((int)HttpStatusCode.BadRequest, response.Errors);
         }

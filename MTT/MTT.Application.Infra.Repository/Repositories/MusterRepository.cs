@@ -24,5 +24,16 @@ namespace MTT.Application.Infra.Repository.Repositories
                 return await Task.FromResult(musters);
             }
         }
+        public async Task<Muster> GetMusterByIdWithCategory(int id)
+        {
+            using (var ctx = new MTTApplicationDbContext())
+            {
+                var musters = ctx.Muster.
+                            Include("Category").
+                            FirstOrDefaultAsync(mu => mu.Id == id);                            
+
+                return await Task.FromResult(musters.Result);
+            }
+        }        
     }
 }

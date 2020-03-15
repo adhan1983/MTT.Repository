@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MTT.Application.Infra.Repository.Data.Migrations.Application
 {
     [DbContext(typeof(MTTApplicationDbContext))]
-    [Migration("20200314201212_InitMTTApplicationDbContext")]
+    [Migration("20200315140504_InitMTTApplicationDbContext")]
     partial class InitMTTApplicationDbContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,8 +72,9 @@ namespace MTT.Application.Infra.Repository.Data.Migrations.Application
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("WasConcluded")
                         .HasColumnType("tinyint(1)");

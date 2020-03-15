@@ -23,4 +23,8 @@
     <ProjectReference Include="..\MTT.Application.Domain\MTT.Application.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Migrations\Application\" />
+  </ItemGroup>
+
 </Project>
