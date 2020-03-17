@@ -4,6 +4,8 @@ using MTT.Application.AppService.Services;
 using MTT.Application.Domain.Interfaces.Repositories;
 using MTT.Application.Domain.Interfaces.Services;
 using MTT.Application.Domain.Service;
+using MTT.Application.Infra.Proxy.Interface;
+using MTT.Application.Infra.Proxy.Proxy;
 using MTT.Application.Infra.Repository.Repositories;
 
 namespace MTT.Application.Infra.CrossCutting
@@ -26,6 +28,10 @@ namespace MTT.Application.Infra.CrossCutting
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IMusterRepository, MusterRepository>();
             services.AddScoped<IActivityRepository, ActivityRepository>();
+
+            services.AddHttpClient<IIdentityServerProxyClient, IdentityServerProxyClient>();
+            
+
         }
     }
 }

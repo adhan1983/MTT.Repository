@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MTT.Application.AppService.Contracts.Requests.Activity;
 using MTT.Application.AppService.Interfaces;
 using System.Net;
@@ -8,6 +9,7 @@ namespace MTT.Application.Presentation.API.Controllers
 {
     [Route("api/activity")]
     [ApiController]
+    [Authorize]
     public class ActivityController : ControllerBase
     {
         private readonly IActivityApplicationService _activityApplicationService;

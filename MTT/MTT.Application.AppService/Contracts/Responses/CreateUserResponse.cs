@@ -1,17 +1,18 @@
-﻿using System.Text.Json.Serialization;
+﻿using MTT.Application.AppService.Contracts.Messages;
+using System.Text.Json.Serialization;
 
 namespace MTT.Application.AppService.Contracts.Responses
 {
     public class CreateUserResponse : BaseResponse
     {
-        public CreateUserResponse(bool success, int id = 0, string error = "")
+        public CreateUserResponse(bool success, GetUseMessage result = null, string error = "")
         {
-            Id = id;
+            Result = result;
             Success = success;
             if (!success)
                 SetError(error);
         }
         [JsonPropertyName("id")]
-        public int Id { get; private set; }
+        public GetUseMessage Result { get; private set; }
     }
 }

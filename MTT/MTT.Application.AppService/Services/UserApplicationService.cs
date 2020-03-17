@@ -5,6 +5,7 @@ using MTT.Application.AppService.Interfaces;
 using MTT.Application.Domain.Domain;
 using MTT.Application.Domain.Interfaces.Services;
 using MTT.Application.Domain.Utilities;
+using MTT.Application.Infra.Proxy.Interface;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,15 +14,28 @@ namespace MTT.Application.AppService.Services
     public class UserApplicationService : IUserApplicationService
     {
         private readonly IUserDomainService _userDomainService;
-        public UserApplicationService(IUserDomainService userDomainService)
-        => _userDomainService = userDomainService;
+        private readonly IIdentityServerProxyClient _identityServerProxyClient;
+        public UserApplicationService(IUserDomainService userDomainService, IIdentityServerProxyClient identityServerProxyClient)
+        {
+            _userDomainService = userDomainService;
+            _identityServerProxyClient = identityServerProxyClient;
+        }
         public async Task<CreateUserResponse> CreateUserAsync(CreateUserRequest request)
         {
             var model = new User { Name = request.Name, Email = request.Email, Password = request.Password };
 
             var result = await _userDomainService.InsertAsync(model);
             if (result)
-                return new CreateUserResponse(true, model.Id);
+            {
+                string token = _identityServerProxyClient.GetToken().Result.Result.Token;
+                GetUseMessage user = new GetUseMessage();
+                user.Id = model.Id;
+                user.Email = model.Email;
+                user.Name = model.Name;
+                user.Token = token;
+
+                return new CreateUserResponse(true, user);
+            }
             else
                 return new CreateUserResponse(true, error: "Fail to CreateUser");
         }

@@ -6,7 +6,7 @@ namespace MTT.IdentityServer.API.ConfigureApplication
     {
         public static void IdentityServerConfigure(this IApplicationBuilder app)
         {
-            //app.UseIdentityServer();
+            app.UseIdentityServer();
             app.UseAuthentication();
             app.UseAuthorization();
         }

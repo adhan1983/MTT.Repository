@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MTT.Application.Domain\MTT.Application.Domain.csproj" />
+    <ProjectReference Include="..\MTT.Application.Infra.Proxy\MTT.Application.Infra.Proxy.csproj" />
   </ItemGroup>
 
 </Project>

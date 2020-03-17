@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MTT.Application.AppService.Contracts.Requests.Category;
-using MTT.Application.AppService.Interfaces;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using MTT.Application.AppService.Interfaces;
+using MTT.Application.AppService.Contracts.Requests.Category;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MTT.Application.Presentation.API.Controllers
 {
     [Route("api/category")]
     [ApiController]
+    [Authorize]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryApplicationService _categoryApplicationService;

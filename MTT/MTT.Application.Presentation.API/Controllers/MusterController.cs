@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MTT.Application.AppService.Contracts.Requests.Muster;
 using MTT.Application.AppService.Interfaces;
 using System.Net;
@@ -8,6 +9,7 @@ namespace MTT.Application.Presentation.API.Controllers
 {
     [Route("api/muster")]
     [ApiController]
+    [Authorize]
     public class MusterController : ControllerBase
     {
         private readonly IMusterApplicationService _musterApplicationService;

@@ -28,9 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MTT.IdentityServer.Infra.CrossCutting.Identity\MTT.IdentityServer.Infra.CrossCutting.Identity.csproj" />
-    <ProjectReference Include="..\MTT.IdentityServer.Infra.CrossCutting\MTT.IdentityServer.Infra.CrossCutting.csproj" />
-    <ProjectReference Include="..\MTT.IdentityServer.Service\MTT.IdentityServer.Service.csproj" />
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>

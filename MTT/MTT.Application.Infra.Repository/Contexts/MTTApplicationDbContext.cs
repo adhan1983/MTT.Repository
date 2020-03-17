@@ -10,7 +10,7 @@ namespace MTT.Application.Infra.Repository.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var migrationsAssembly = typeof(MTTApplicationDbContext).GetTypeInfo().Assembly.GetName().Name;
-            string STRCONNECTION = @"Server=CEPHEUS.cd.com;Port=3306;Database=wz_identityserver;Uid=user_wz_identityserver;Pwd=123987!@#;persistsecurityinfo=True;SslMode=none;";
+            string STRCONNECTION = @"***";
             optionsBuilder.UseMySql(STRCONNECTION, x => x.MigrationsAssembly(migrationsAssembly));
             base.OnConfiguring(optionsBuilder);
         }

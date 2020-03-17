@@ -1,23 +1,30 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MTT.IdentityServer.API.IdentityServer;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace MTT.IdentityServer.API
 {
     public class Program
     {      
         public static void Main(string[] args)
-        {                     
-            IHost host = CreateHostBuilder(args).Build();
-            
-            //var scope = host.Services.CreateScope();
-            
-            //var _buildIdentityServer = scope.ServiceProvider.GetRequiredService<IBuildIdentityServer>();
-            
-            //host = _buildIdentityServer.Build(host);
-
-            host.Run();            
+        {
+            var host = CreateHostBuilder(args).Build();
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    SeedData.EnsureSeedData(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex.ToString());
+                }
+            }
+            host.Run();
         }
         
         public static IHostBuilder CreateHostBuilder(string[] args) =>

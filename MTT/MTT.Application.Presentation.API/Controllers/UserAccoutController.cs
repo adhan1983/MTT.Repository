@@ -20,7 +20,7 @@ namespace MTT.Application.Presentation.API.Controllers
             var response = await _userApplicationService.CreateUserAsync(request);
             
             if (response.Success)
-                return StatusCode((int)HttpStatusCode.Created, response.Id);
+                return StatusCode((int)HttpStatusCode.Created, response);
             else
                 return StatusCode((int)HttpStatusCode.BadRequest, response.Errors);
         }

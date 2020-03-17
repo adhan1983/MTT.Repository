@@ -9,6 +9,8 @@ namespace MTT.Application.AppService.Contracts.Messages
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("email")]
-        public string Email { get; set; }
+        public string Email { get; set; }        
+        [JsonPropertyName("token")]
+        public string Token { get; set; }
     }
 }
