@@ -4,6 +4,7 @@ using MTT.Application.AppService.Contracts.Responses.Category;
 using MTT.Application.AppService.Interfaces;
 using MTT.Application.Domain.Domain;
 using MTT.Application.Domain.Interfaces.Services;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MTT.Application.AppService.Services
@@ -36,5 +37,25 @@ namespace MTT.Application.AppService.Services
             else
                 return new UpdateCategoryResponse(true, error: "Fail to Create Category");
         }
+        public async Task<ListCategoryResponse> ListCategoryAsync()
+        {
+            var lstModel = await _categoryDomainService.GetAllAsync();
+
+            if (lstModel != null && lstModel.Count > 0)
+            {
+                var lstCategory = 
+                    lstModel.
+                    Select(model => new ListCategoryMessage
+                    {
+                        Id = model.Id,
+                        Name = model.Name
+                    }).ToList();
+
+                return new ListCategoryResponse(true, lstCategory);
+            }
+            else
+                return new ListCategoryResponse(false, error: "Fail to list Category");
+        }
+
     }
 }

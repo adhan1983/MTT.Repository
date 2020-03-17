@@ -5,4 +5,3 @@ C:\Users\adhan.maldonado\Documents\aomgit\aomstudyProjects\MTT.Repository\MTT\MT
 C:\Users\adhan.maldonado\Documents\aomgit\aomstudyProjects\MTT.Repository\MTT\MTT.Application.Infra.Proxy\obj\Debug\netcoreapp3.1\MTT.Application.Infra.Proxy.AssemblyInfo.cs
 C:\Users\adhan.maldonado\Documents\aomgit\aomstudyProjects\MTT.Repository\MTT\MTT.Application.Infra.Proxy\obj\Debug\netcoreapp3.1\MTT.Application.Infra.Proxy.dll
 C:\Users\adhan.maldonado\Documents\aomgit\aomstudyProjects\MTT.Repository\MTT\MTT.Application.Infra.Proxy\obj\Debug\netcoreapp3.1\MTT.Application.Infra.Proxy.pdb
-C:\Users\adhan.maldonado\Documents\aomgit\aomstudyProjects\MTT.Repository\MTT\MTT.Application.Infra.Proxy\obj\Debug\netcoreapp3.1\MTT.Application.Infra.Proxy.csprojAssemblyReference.cache

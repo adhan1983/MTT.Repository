@@ -12,7 +12,7 @@ namespace MTT.Application.AppService.Contracts.Responses
             if (!success)
                 SetError(error);
         }
-        [JsonPropertyName("id")]
+        [JsonPropertyName("user")]
         public GetUseMessage Result { get; private set; }
     }
 }

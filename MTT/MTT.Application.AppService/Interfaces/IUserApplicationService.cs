@@ -9,7 +9,7 @@ namespace MTT.Application.AppService.Interfaces
         Task<CreateUserResponse> CreateUserAsync(CreateUserRequest request);
         Task<GetUserResponse> GetUserAsync(GetUserRequest request);
         Task<ListUserResponse> ListUserAsync(ListUserRequest request);
-
         Task<DeleteUserResponse> DeleteUserAsync(DeleteUserRequest request);
+        Task<GetTokenResponse> GetToken(GetTokenRequest request);
     }
 }

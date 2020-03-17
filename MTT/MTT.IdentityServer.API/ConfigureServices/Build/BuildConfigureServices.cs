@@ -9,9 +9,9 @@ namespace MTT.IdentityServer.API.ConfigureServices.Build
 {
     public static class BuildConfigureServices
     {
-        public static void Build(this IServiceCollection services) 
+        public static void Build(this IServiceCollection services)
         {
-            services.AddControllers();            
+            services.AddControllers();
             services.SwaggerConfigure();
             services.AddAuthorization();
             string STRCONNECTION = @"***";

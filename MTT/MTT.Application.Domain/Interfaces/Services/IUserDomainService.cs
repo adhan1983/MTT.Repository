@@ -9,5 +9,7 @@ namespace MTT.Application.Domain.Interfaces.Services
     public interface IUserDomainService : IBaseDomainService<User, int>
     {
         Task<List<User>> GetAllByFilter(Expression<Func<User, bool>> filter);
+        Task<User> GetUserByEmail(string email);
+
     }
 }

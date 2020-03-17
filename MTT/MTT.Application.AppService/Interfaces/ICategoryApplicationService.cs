@@ -8,5 +8,6 @@ namespace MTT.Application.AppService.Interfaces
     {
         Task<CreateCategoryResponse> CreateAsync(CreateCategoryRequest request);
         Task<UpdateCategoryResponse> UpdateAsync(UpdateCategoryRequest request);
+        Task<ListCategoryResponse> ListCategoryAsync();
     }
 }

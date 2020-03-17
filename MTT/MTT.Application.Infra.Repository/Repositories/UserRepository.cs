@@ -20,5 +20,14 @@ namespace MTT.Application.Infra.Repository.Repositories
                 return await Task.FromResult(lst);
             }
         }
+        public async Task<User> GetUserByEmail(string email) 
+        {
+            using (var ctx = new MTTApplicationDbContext())
+            {
+                var lst = ctx.User.FirstOrDefault(us => us.Email == email);
+
+                return await Task.FromResult(lst);
+            }
+        }
     }
 }

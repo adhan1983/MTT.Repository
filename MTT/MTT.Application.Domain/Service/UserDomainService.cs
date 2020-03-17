@@ -19,6 +19,8 @@ namespace MTT.Application.Domain.Service
         public async Task<List<User>> GetAllAsync()     => await _userRepository.GetAllAsync();
         public async Task<User> GetByIdAsync(int id)    => await _userRepository.GetByIdAsync(id);
         public async Task<List<User>> GetAllByFilter(Expression<Func<User, bool>> predicate)
-        => await _userRepository.GetAllByFilter(predicate);
+            => await _userRepository.GetAllByFilter(predicate);
+        public async Task<User> GetUserByEmail(string email) 
+            => await _userRepository.GetUserByEmail(email);
     }
 }

@@ -37,5 +37,16 @@ namespace MTT.Application.Presentation.API.Controllers
             else
                 return StatusCode((int)HttpStatusCode.BadRequest, response.Errors);
         }
+
+        [HttpGet][Route("list")]
+        public async Task<IActionResult> Get()
+        {
+            var response = await _categoryApplicationService.ListCategoryAsync();
+
+            if (response.Success)
+                return StatusCode((int)HttpStatusCode.OK, response.Categories);
+            else
+                return StatusCode((int)HttpStatusCode.NotFound, response.Errors);
+        }
     }
 }
