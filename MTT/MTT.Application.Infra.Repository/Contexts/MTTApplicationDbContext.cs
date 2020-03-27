@@ -10,7 +10,7 @@ namespace MTT.Application.Infra.Repository.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var migrationsAssembly = typeof(MTTApplicationDbContext).GetTypeInfo().Assembly.GetName().Name;
-            string STRCONNECTION = @"***";
+            string STRCONNECTION = @"Server=localhost;Database=db_mtt;Uid=mtt_user;Pwd=@Abc12345;";
             optionsBuilder.UseMySql(STRCONNECTION, x => x.MigrationsAssembly(migrationsAssembly));
             base.OnConfiguring(optionsBuilder);
         }

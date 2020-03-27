@@ -1,11 +1,11 @@
-﻿using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.EntityFramework.Mappers;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using MTT.IdentityServer.API.DbContext;
-using MTT.IdentityServer.API.IdtServerConfiguration;
-using System;
+﻿using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using MTT.IdentityServer.API.DbContext;
+using IdentityServer4.EntityFramework.Mappers;
+using Microsoft.Extensions.DependencyInjection;
+using IdentityServer4.EntityFramework.DbContexts;
+using MTT.IdentityServer.API.IdtServerConfiguration;
 
 namespace MTT.IdentityServer.API
 {
@@ -13,7 +13,7 @@ namespace MTT.IdentityServer.API
     {
         public static void EnsureSeedData(IServiceProvider serviceProvider)
         {
-            PerformMigrations(serviceProvider);
+            //PerformMigrations(serviceProvider);
             EnsureSeedData(serviceProvider.GetRequiredService<ConfigurationDbContext>());
         }
         private static void PerformMigrations(IServiceProvider serviceProvider)

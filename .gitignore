@@ -29,3 +29,5 @@
 /MTT/MTT.Application.Domain/bin/Debug/netcoreapp3.1
 /MTT/MTT.Application.Infra.CrossCutting/bin/Debug/netcoreapp3.1
 /MTT/MTT.Application.Infra.Repository/bin/Debug/netcoreapp3.1
+/MTT/MTT.Application.Infra.Proxy/obj/Debug/netcoreapp3.1
+/MTT/MTT.Application.Infra.Proxy/obj/project.nuget.cache

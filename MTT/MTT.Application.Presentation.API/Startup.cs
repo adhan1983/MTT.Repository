@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MTT.Application.Infra.CrossCutting;
 using MTT.Application.Presentation.API.Configurations;
-using Swashbuckle.AspNetCore.Swagger;
 using System.Collections.Generic;
 
 namespace MTT.Application.Presentation.API

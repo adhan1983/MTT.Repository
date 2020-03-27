@@ -14,7 +14,7 @@ namespace MTT.IdentityServer.API.ConfigureServices.Build
             services.AddControllers();
             services.SwaggerConfigure();
             services.AddAuthorization();
-            string STRCONNECTION = @"***";
+            string STRCONNECTION = @"Server=localhost;Database=db_identityserver;Uid=identityserver_user;Pwd=@Abc12345;";
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(STRCONNECTION));
             
